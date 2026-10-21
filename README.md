@@ -1,6 +1,4 @@
-# <Your product name>
-
-> Fill this top section from your Examate project card on Day 1. Replace every line in angle brackets.
+# BoardBridge
 
 ## Problem
 Firmware engineers developing embedded systems often struggle to identify the correct drivers, devicetree bindings, Kconfig options, and working samples in the large Zephyr RTOS repository. With thousands of source files and hardware configurations, manually finding compatible components can consume significant development time and lead to configuration errors. Existing documentation searches may not provide a complete, board-specific answer connecting the driver, hardware description, and build configuration. BoardBridge solves this problem by combining repository indexing, hybrid code search, and Retrieval-Augmented Generation (RAG) to provide source-cited technical answers. Its AI research agent further investigates complex hardware integration questions and flags claims that cannot be verified against the source code.
