@@ -17,7 +17,9 @@ TEXT_SUFFIXES = {
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("directory", nargs="?", default="data/raw", help="directory to count (default: data/raw)")
+    parser.add_argument(
+        "directory", nargs="?", default="data/raw", help="directory to count (default: data/raw)"
+    )
     args = parser.parse_args()
 
     root = Path(args.directory)

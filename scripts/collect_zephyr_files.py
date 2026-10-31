@@ -139,7 +139,11 @@ def main() -> int:
             print(f"  - {path}: {reason}")
 
     if downloaded < 50:
-        print("Target not met: fewer than 50 files are present. Re-run with internet access or a different --ref.", file=sys.stderr)
+        print(
+            "Target not met: fewer than 50 files are present. "
+            "Re-run with internet access or a different --ref.",
+            file=sys.stderr,
+        )
         return 2
 
     print("Target met: at least 50 files collected/reused.")

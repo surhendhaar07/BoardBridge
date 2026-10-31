@@ -11,9 +11,9 @@ Commit after every class. Tag every Friday: `git tag week-N && git push origin w
 - [x] Tag week-1 pushed
 
 ## Week 2 (tag week-2 by Fri 30 Oct)
-- [ ] POST /chat calls an LLM and returns structured JSON
-- [ ] Streaming, timeouts, retry and a fallback model
-- [ ] Cost log + GET /usage
+- [x] POST /chat calls an LLM and returns structured JSON
+- [x] Streaming, timeouts, retry and a fallback model
+- [x] Cost log + GET /usage
 - [ ] Docker Compose (API + Postgres/pgvector) runs
 - [ ] CI green, live link in README
 - [ ] Tag week-2 pushed
@@ -29,3 +29,4 @@ Commit after every class. Tag every Friday: `git tag week-N && git push origin w
 | Date | What I did today | Commit |
 |---|---|---|
 | 2026-10-23 | Collected 60 Zephyr files, updated DATASET.md, added samples in data/sample/ | week-1 |
+| 2026-10-31 | Day 5: Production LLM integration with SSE streaming, retries, fallback model, cost tracking, and /usage | Day 5 |
