@@ -1,4 +1,5 @@
 """Streaming and fallback execution manager for BoardBridge."""
+
 from __future__ import annotations
 
 import json
@@ -54,7 +55,7 @@ async def stream_rag_chat(
             can_fallback = (
                 fallback_provider is not None
                 and not has_streamed_any_text
-                and isinstance(primary_err, (RetryableLLMError, TimeoutError, ConnectionError))
+                and isinstance(primary_err, RetryableLLMError | TimeoutError | ConnectionError)
             )
 
             if not can_fallback:

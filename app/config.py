@@ -9,6 +9,9 @@ class Settings(BaseSettings):
     app_name: str = "BoardBridge"
     environment: str = "local"  # local | ci | production
 
+    # Database configuration (PostgreSQL / pgvector)
+    database_url: str | None = None
+
     # Primary LLM provider configuration
     llm_provider: str = "fake"  # fake | openai | openai_compat
     llm_base_url: str = "http://localhost:11434/v1"

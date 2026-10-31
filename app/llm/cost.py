@@ -1,4 +1,5 @@
 """Token usage and cost tracking for BoardBridge LLM calls."""
+
 from __future__ import annotations
 
 import json
@@ -94,4 +95,3 @@ def aggregate_usage(log_path: str | Path = "logs/cost.jsonl") -> dict[str, dict[
         return {}
 
     return daily_stats
-

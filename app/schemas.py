@@ -1,4 +1,5 @@
 """Request and response models for BoardBridge."""
+
 from pydantic import BaseModel, Field, model_validator
 
 

@@ -4,6 +4,7 @@
 Example:
     python scripts/collect_zephyr_files.py --target 60
 """
+
 from __future__ import annotations
 
 import argparse
@@ -39,8 +40,17 @@ PREFERRED_PATHS = (
 
 ALLOWED_NAMES = {"Kconfig", "prj.conf", "CMakeLists.txt"}
 ALLOWED_SUFFIXES = {
-    ".c", ".h", ".yaml", ".yml", ".dts", ".dtsi", ".overlay",
-    ".rst", ".md", ".txt", ".conf",
+    ".c",
+    ".h",
+    ".yaml",
+    ".yml",
+    ".dts",
+    ".dtsi",
+    ".overlay",
+    ".rst",
+    ".md",
+    ".txt",
+    ".conf",
 }
 
 
@@ -100,8 +110,7 @@ def main() -> int:
 
     tree = tree_data.get("tree", [])
     candidates = [
-        item["path"] for item in tree
-        if item.get("type") == "blob" and is_candidate(item.get("path", ""))
+        item["path"] for item in tree if item.get("type") == "blob" and is_candidate(item.get("path", ""))
     ]
     candidates.sort(key=priority)
 

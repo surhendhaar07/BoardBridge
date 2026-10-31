@@ -1,4 +1,5 @@
 """Fake LLM provider for testing and offline local development."""
+
 from __future__ import annotations
 
 import asyncio
@@ -73,4 +74,3 @@ class FakeLLMProvider(LLMProvider):
             estimated=True,
         )
         yield StreamChunk(delta="", usage=usage, model=active_model)
-

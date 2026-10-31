@@ -1,4 +1,5 @@
 """LLM provider abstraction, cost tracking, and streaming for BoardBridge."""
+
 from app.llm.base import (
     LLMError,
     LLMProvider,
@@ -29,4 +30,3 @@ __all__ = [
     "log_cost",
     "stream_rag_chat",
 ]
-

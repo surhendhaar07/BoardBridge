@@ -1,4 +1,5 @@
 """Zephyr RTOS document retrieval and RAG context construction."""
+
 from __future__ import annotations
 
 import re
@@ -114,4 +115,3 @@ def build_rag_messages(
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": user_content},
     ]
-

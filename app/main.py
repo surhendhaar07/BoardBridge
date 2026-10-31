@@ -6,6 +6,7 @@ from fastapi import Depends, FastAPI, HTTPException
 from fastapi.responses import StreamingResponse
 
 from app.config import Settings, get_settings
+from app.db import check_database_readiness
 from app.llm.cost import aggregate_usage
 from app.llm.factory import get_fallback_provider, get_llm_provider
 from app.llm.manager import stream_rag_chat
@@ -25,8 +26,8 @@ def health(settings: SettingsDep) -> dict:
 
 @app.get("/ready")
 def ready(settings: SettingsDep) -> dict:
-    """Readiness probe: application is ready to handle traffic."""
-    return {"status": "ready", "app": settings.app_name, "environment": settings.environment}
+    """Readiness probe: verifies database connectivity if configured."""
+    return check_database_readiness(settings.database_url)
 
 
 @app.post("/chat")

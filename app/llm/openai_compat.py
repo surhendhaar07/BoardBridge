@@ -1,4 +1,5 @@
 """OpenAI-compatible LLM provider with timeout, retry, backoff, and streaming."""
+
 from __future__ import annotations
 
 import asyncio
@@ -19,7 +20,7 @@ NON_RETRYABLE_STATUS_CODES = {400, 401, 403, 404}
 
 def calculate_backoff(attempt: int, base: float = 0.5, cap: float = 8.0) -> float:
     """Calculate exponential backoff with full jitter: delay in [0, min(cap, base * 2^attempt)]."""
-    max_delay = min(cap, base * (2 ** attempt))
+    max_delay = min(cap, base * (2**attempt))
     return random.uniform(0, max_delay)
 
 
@@ -179,8 +180,8 @@ class OpenAICompatProvider(LLMProvider):
                     # to prevent partial duplicate responses or corrupted output streams.
                     raise LLMError(f"Stream interrupted after partial output: {exc}") from exc
 
-                is_retryable = (
-                    isinstance(exc, (RetryableLLMError, httpx.TimeoutException, httpx.NetworkError))
+                is_retryable = isinstance(
+                    exc, RetryableLLMError | httpx.TimeoutException | httpx.NetworkError
                 )
 
                 if is_retryable and attempt < self.max_retries:
@@ -191,7 +192,6 @@ class OpenAICompatProvider(LLMProvider):
 
                 if isinstance(exc, RetryableLLMError):
                     raise
-                if isinstance(exc, (httpx.TimeoutException, httpx.NetworkError)):
+                if isinstance(exc, httpx.TimeoutException | httpx.NetworkError):
                     raise RetryableLLMError(f"Network error communicating with LLM: {exc}") from exc
                 raise LLMError(f"LLM call failed: {exc}") from exc
-

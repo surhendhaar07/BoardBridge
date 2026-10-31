@@ -1,4 +1,5 @@
 """Tests for LLM providers: Fake and OpenAI-compatible with retries, timeout, and backoff."""
+
 import asyncio
 
 import httpx
@@ -153,7 +154,7 @@ def test_backoff_delay_stays_within_configured_limits():
         for _ in range(20):
             delay = calculate_backoff(attempt, base=base, cap=cap)
             assert 0.0 <= delay <= cap
-            max_bound = min(cap, base * (2 ** attempt))
+            max_bound = min(cap, base * (2**attempt))
             assert delay <= max_bound
 
 

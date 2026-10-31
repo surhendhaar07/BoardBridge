@@ -1,13 +1,56 @@
 name: CI
-on: [push, pull_request]
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
 jobs:
   test:
+    name: Lint, Format and Test
+    runs-on: ubuntu-latest
+    env:
+      LLM_PROVIDER: fake
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements-dev.txt
+
+      - name: Run Ruff Lint Check
+        run: ruff check .
+
+      - name: Run Ruff Formatter Check
+        run: ruff format --check .
+
+      - name: Run Automated Tests
+        run: pytest -q
+
+  docker-smoke-test:
+    name: Docker Smoke Test
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - run: pip install -r requirements-dev.txt
-      - run: ruff check .
-      - run: pytest -q
+
+      - name: Build Docker Image
+        run: docker build -t boardbridge:ci .
+
+      - name: Start Docker Container
+        run: docker run -d --name boardbridge-app -p 8000:8000 -e LLM_PROVIDER=fake boardbridge:ci
+
+      - name: Verify Container Health Check
+        run: |
+          sleep 3
+          curl --retry 5 --retry-connrefused --retry-delay 2 -fsS http://localhost:8000/health
+
+      - name: Print Container Logs on Failure
+        if: failure()
+        run: docker logs boardbridge-app

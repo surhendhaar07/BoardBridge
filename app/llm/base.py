@@ -1,4 +1,5 @@
 """Base abstractions and protocols for LLM providers."""
+
 from __future__ import annotations
 
 from collections.abc import AsyncIterator
@@ -52,4 +53,3 @@ class LLMProvider(Protocol):
     ) -> AsyncIterator[StreamChunk]:
         """Stream response chunks for given chat messages."""
         ...
-

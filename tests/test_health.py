@@ -7,4 +7,4 @@ def test_health_is_fast_and_ok(client):
 def test_ready_is_fast_and_ok(client):
     r = client.get("/ready")
     assert r.status_code == 200
-    assert r.json() == {"status": "ready", "app": "examate-rag", "environment": "test"}
+    assert r.json() == {"status": "ready", "database": "not configured"}

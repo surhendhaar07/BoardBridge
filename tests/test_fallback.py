@@ -1,4 +1,5 @@
 """Tests for fallback model behavior and cost log accuracy."""
+
 import asyncio
 import json
 

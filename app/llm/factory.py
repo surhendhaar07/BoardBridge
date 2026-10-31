@@ -1,4 +1,5 @@
 """Factory functions for instantiating LLM providers."""
+
 from __future__ import annotations
 
 from app.config import Settings, get_settings
@@ -50,4 +51,3 @@ def get_fallback_provider(settings: Settings | None = None) -> LLMProvider | Non
         max_retries=cfg.llm_max_retries,
         backoff_base_seconds=cfg.llm_backoff_base_seconds,
     )
-

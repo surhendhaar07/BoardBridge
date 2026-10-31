@@ -4,14 +4,26 @@
 Text/code source files count as files (not physical pages).
 PDF pages are counted when pypdf is installed.
 """
+
 from __future__ import annotations
 
 import argparse
 from pathlib import Path
 
 TEXT_SUFFIXES = {
-    ".c", ".h", ".yaml", ".yml", ".dts", ".dtsi", ".overlay",
-    ".rst", ".md", ".txt", ".conf", ".py", ".json",
+    ".c",
+    ".h",
+    ".yaml",
+    ".yml",
+    ".dts",
+    ".dtsi",
+    ".overlay",
+    ".rst",
+    ".md",
+    ".txt",
+    ".conf",
+    ".py",
+    ".json",
 }
 
 
@@ -35,6 +47,7 @@ def main() -> int:
     if pdfs:
         try:
             from pypdf import PdfReader
+
             pdf_page_count = sum(len(PdfReader(str(path)).pages) for path in pdfs)
         except ImportError:
             print("Note: install pypdf to count PDF pages: python -m pip install pypdf")

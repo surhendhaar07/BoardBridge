@@ -1,4 +1,5 @@
 """Tests for /chat (SSE streaming) and /usage endpoints."""
+
 import json
 
 from fastapi.testclient import TestClient

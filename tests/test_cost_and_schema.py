@@ -1,4 +1,5 @@
 """Tests for cost calculations, token estimation, and schema validations."""
+
 import json
 
 import pytest
@@ -72,34 +73,40 @@ def test_aggregate_usage_with_records_and_malformed(tmp_path):
     log_file = tmp_path / "cost.jsonl"
     records = [
         # Valid day 1
-        json.dumps({
-            "provider": "fake",
-            "model": "model-a",
-            "input_tokens": 100,
-            "output_tokens": 50,
-            "cost_usd": 0.001,
-            "timestamp": "2026-10-14T10:00:00Z",
-        }),
+        json.dumps(
+            {
+                "provider": "fake",
+                "model": "model-a",
+                "input_tokens": 100,
+                "output_tokens": 50,
+                "cost_usd": 0.001,
+                "timestamp": "2026-10-14T10:00:00Z",
+            }
+        ),
         # Corrupted line
         "{ this is invalid json }",
         # Valid day 1 again
-        json.dumps({
-            "provider": "fake",
-            "model": "model-a",
-            "input_tokens": 200,
-            "output_tokens": 100,
-            "cost_usd": 0.002,
-            "timestamp": "2026-10-14T15:30:00Z",
-        }),
+        json.dumps(
+            {
+                "provider": "fake",
+                "model": "model-a",
+                "input_tokens": 200,
+                "output_tokens": 100,
+                "cost_usd": 0.002,
+                "timestamp": "2026-10-14T15:30:00Z",
+            }
+        ),
         # Valid day 2
-        json.dumps({
-            "provider": "openai_compat",
-            "model": "model-b",
-            "input_tokens": 500,
-            "output_tokens": 250,
-            "cost_usd": 0.005,
-            "timestamp": "2026-10-15T08:00:00Z",
-        }),
+        json.dumps(
+            {
+                "provider": "openai_compat",
+                "model": "model-b",
+                "input_tokens": 500,
+                "output_tokens": 250,
+                "cost_usd": 0.005,
+                "timestamp": "2026-10-15T08:00:00Z",
+            }
+        ),
     ]
     log_file.write_text("\n".join(records) + "\n", encoding="utf-8")
 
