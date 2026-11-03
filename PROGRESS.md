@@ -31,9 +31,25 @@ Commit after every class. Tag every Friday: `git tag week-N && git push origin w
 - [x] Day 6 – Docker smoke test job in CI
 - [x] Day 6 – Pre-commit hooks configured with Ruff (ruff + ruff-format) and verified
 - [x] Day 6 – CI status badge in README linked to workflow
-- [ ] Day 6 – Render live URL verified (ready for deployment connect)
 - [x] Day 6 – Week 1 Git tag (week-1 tag created)
-- [x] Tag week-2 created and pushed
+
+## Week 2 Tasks & Verification
+
+### Session 7 – CI and Going Live
+- [x] Session 7 – CI workflow (.github/workflows/ci.yml with test and docker-smoke jobs)
+- [x] Ruff lint check (ruff check .)
+- [x] Ruff format check (ruff format --check .)
+- [x] Automated tests in CI (pytest -q with Fake LLM)
+- [x] Docker smoke test (boardbridge image, /health and /ready verification)
+- [x] Pre-commit configuration (.pre-commit-config.yaml with pre-commit-hooks v6.0.0 & ruff v0.17.3)
+- [x] Pre-commit hooks passing (check-yaml, end-of-file-fixer, trailing-whitespace, detect-private-key, ruff-check, ruff-format)
+- [x] Render deployment configuration (Primary platform: Render; Docker runtime, free-tier setup, environment variables)
+- [ ] Live /health endpoint verified on Render (pending user dashboard deploy)
+- [ ] Live /ready endpoint verified on Render (pending user dashboard deploy)
+- [ ] Live /chat streaming verified on Render (pending user dashboard deploy)
+- [x] CI badge in README (linked to ci.yml workflow)
+- [x] Live URL in README (https://boardbridge.onrender.com/health)
+- [x] week-2 Git tag ready for submission
 
 ## Daily log
 | Date | What I did today | Commit |
@@ -42,4 +58,5 @@ Commit after every class. Tag every Friday: `git tag week-N && git push origin w
 | 2026-10-22 | Day 2: Added 10 technical embedded firmware questions to QUESTIONS.md | Day - 1 |
 | 2026-10-23 | Day 3: Collected 60 Zephyr files, updated DATASET.md, added samples | week-1 |
 | 2026-10-31 | Day 5: Production LLM integration with SSE streaming, retries, fallback model, cost tracking, and /usage | Day 5 |
-| 2026-10-31 | Day 6: Docker Compose with pgvector, GET /ready check, CI with smoke test, pre-commit hooks, and deployment guide | week-2 |
+| 2026-10-31 | Day 6: Docker Compose with pgvector, GET /ready check, CI with smoke test, pre-commit hooks, and deployment guide | feat: compose with pgvector |
+| 2026-11-03 | Session 7: CI on every push with docker-smoke, pre-commit v6.0.0 hooks, Render deployment guide, CI badge and live link | week-2 |

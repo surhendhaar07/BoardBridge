@@ -50,4 +50,3 @@ volumes:
 networks:
   boardbridge-net:
     driver: bridge
-

@@ -13,10 +13,11 @@ jobs:
     env:
       LLM_PROVIDER: fake
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v7
 
       - name: Set up Python 3.12
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.12"
           cache: "pip"
@@ -33,24 +34,34 @@ jobs:
       - name: Run Automated Tests
         run: pytest -q
 
-  docker-smoke-test:
+  docker-smoke:
     name: Docker Smoke Test
     needs: test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v7
 
       - name: Build Docker Image
-        run: docker build -t boardbridge:ci .
+        run: docker build -t boardbridge .
 
       - name: Start Docker Container
-        run: docker run -d --name boardbridge-app -p 8000:8000 -e LLM_PROVIDER=fake boardbridge:ci
+        run: docker run -d --name boardbridge -p 8000:8000 -e LLM_PROVIDER=fake boardbridge
 
-      - name: Verify Container Health Check
+      - name: Wait for API and Check Endpoints
         run: |
-          sleep 3
-          curl --retry 5 --retry-connrefused --retry-delay 2 -fsS http://localhost:8000/health
+          for i in $(seq 1 20); do
+            if curl -fsS http://localhost:8000/health > /dev/null 2>&1; then
+              echo "API is up after $i seconds"
+              break
+            fi
+            sleep 1
+          done
+          echo "Checking /health endpoint..."
+          curl -fsS http://localhost:8000/health
+          echo -e "\nChecking /ready endpoint..."
+          curl -fsS http://localhost:8000/ready
 
-      - name: Print Container Logs on Failure
+      - name: Print Docker Logs on Failure
         if: failure()
-        run: docker logs boardbridge-app
+        run: docker logs boardbridge

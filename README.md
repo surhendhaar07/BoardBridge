@@ -2,6 +2,10 @@
 
 [![CI](https://github.com/surhendhaar07/BoardBridge/actions/workflows/ci.yml/badge.svg)](https://github.com/surhendhaar07/BoardBridge/actions/workflows/ci.yml)
 
+Live: https://boardbridge.onrender.com/health
+
+> The application is hosted on a free-tier instance. It may sleep after inactivity, and the first request after sleeping can take approximately one minute.
+
 ## Problem
 Firmware engineers developing embedded systems often struggle to identify the correct drivers, devicetree bindings, Kconfig options, and working samples in the large Zephyr RTOS repository. With thousands of source files and hardware configurations, manually finding compatible components can consume significant development time and lead to configuration errors. Existing documentation searches may not provide a complete, board-specific answer connecting the driver, hardware description, and build configuration. BoardBridge solves this problem by combining repository indexing, hybrid code search, and Retrieval-Augmented Generation (RAG) to provide source-cited technical answers. Its AI research agent further investigates complex hardware integration questions and flags claims that cannot be verified against the source code.
 
@@ -375,4 +379,6 @@ curl localhost:8000/ready
 ```
 
 ## Live link
-<To be updated after connecting Render service>
+- Service Root: https://boardbridge.onrender.com
+- Health Check: https://boardbridge.onrender.com/health
+- Readiness Check: https://boardbridge.onrender.com/ready
