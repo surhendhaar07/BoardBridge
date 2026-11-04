@@ -51,6 +51,25 @@ Commit after every class. Tag every Friday: `git tag week-N && git push origin w
 - [x] Live URL in README (https://boardbridge.onrender.com/health)
 - [x] week-2 Git tag ready for submission
 
+## Week 3 Tasks & Verification
+
+### GenAI Session 8 – Parsing Documents
+- [x] Dependencies installed (`pdfplumber`, `beautifulsoup4`, `pytesseract`, `reportlab`)
+- [x] `app/ingest/clean.py` created with all 6 normalization and cleaning rules
+- [x] `app/ingest/parse.py` created with modular dispatcher and 7-field record schema
+- [x] PDF parsing implemented with page-by-page extraction, table isolation, and font-size heading detection
+- [x] HTML parsing implemented with semantic root selection, tag removal, and table extraction
+- [x] Markdown and text parsing implemented with heading extraction and safe UTF-8 decoding
+- [x] Zephyr source-code parsing implemented with preserved indentation, spacing, and firmware symbol headings
+- [x] Table extraction implemented with bounding-box text isolation and readable row/cell formatting
+- [x] OCR support implemented with Tesseract detection and graceful `needs_ocr` fallback
+- [x] Unit tests created (`tests/sample_docs.py` and `tests/test_parse.py`) covering all 23 requirements
+- [x] pytest passes (50/50 tests passing across entire repository)
+- [x] Ruff checks pass (`ruff check .` and `ruff format --check .`)
+- [x] 50 records generated (`data/parsed/pages.jsonl` and `data/parsed/sample_pages.json`)
+- [x] `sample_pages.json` inspected and validated with 5+ records
+- [x] `DATASET.md` updated with comprehensive parsing documentation and run statistics
+
 ## Daily log
 | Date | What I did today | Commit |
 |---|---|---|
@@ -60,3 +79,4 @@ Commit after every class. Tag every Friday: `git tag week-N && git push origin w
 | 2026-10-31 | Day 5: Production LLM integration with SSE streaming, retries, fallback model, cost tracking, and /usage | Day 5 |
 | 2026-10-31 | Day 6: Docker Compose with pgvector, GET /ready check, CI with smoke test, pre-commit hooks, and deployment guide | feat: compose with pgvector |
 | 2026-11-03 | Session 7: CI on every push with docker-smoke, pre-commit v6.0.0 hooks, Render deployment guide, CI badge and live link | week-2 |
+| 2026-11-04 | Session 8: Document parsing for Zephyr source, PDF, HTML, Markdown; 23 test cases; pages.jsonl & sample_pages.json | Session 8 |

@@ -6,5 +6,6 @@ __pycache__/
 .ruff_cache/
 logs/
 data/raw/
+data/parsed/pages.jsonl
 *.sqlite
 .DS_Store
