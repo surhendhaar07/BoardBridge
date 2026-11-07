@@ -70,6 +70,22 @@ Commit after every class. Tag every Friday: `git tag week-N && git push origin w
 - [x] `sample_pages.json` inspected and validated with 5+ records
 - [x] `DATASET.md` updated with comprehensive parsing documentation and run statistics
 
+### GenAI Session 9 (Task 1) – Document Chunking and Preview
+- [x] `app/rag/chunking.py` created with `MAX_CHARS = 1000`, `OVERLAP = 150`, `MIN_CHARS = 25`
+- [x] Standard `Chunk` dataclass implemented with 8 provenance metadata fields
+- [x] Whitespace normalization and SHA-256 content hashing (`normalise`, `content_hash`)
+- [x] Duplicated table text stripping (`strip_table_text`)
+- [x] Heading-based document splitting and section continuation (`split_by_heading`)
+- [x] Long paragraph splitting with sentence boundary prioritization (`_cut`)
+- [x] Paragraph packing with word-bounded overlap (`pack`)
+- [x] Separate table chunking with repeated header schema preservation (`table_texts`)
+- [x] Main chunking pipeline (`chunk_pages`) skipping `needs_ocr` and `empty`
+- [x] Command-line chunk preview tool (`tools/preview_chunks.py`)
+- [x] Unit test suite (`tests/test_chunking.py`) with 22/22 passing tests
+- [x] 187 chunks generated and previewed on actual Zephyr dataset
+- [x] Full test suite (72/72 tests) passing
+- [x] `CHUNKING.md` created with complete documentation
+
 ## Daily log
 | Date | What I did today | Commit |
 |---|---|---|
@@ -80,3 +96,4 @@ Commit after every class. Tag every Friday: `git tag week-N && git push origin w
 | 2026-10-31 | Day 6: Docker Compose with pgvector, GET /ready check, CI with smoke test, pre-commit hooks, and deployment guide | feat: compose with pgvector |
 | 2026-11-03 | Session 7: CI on every push with docker-smoke, pre-commit v6.0.0 hooks, Render deployment guide, CI badge and live link | week-2 |
 | 2026-11-04 | Session 8: Document parsing for Zephyr source, PDF, HTML, Markdown; 23 test cases; pages.jsonl & sample_pages.json | Session 8 |
+| 2026-11-07 | Session 9 Task 1: Chunking module, 1000/150/25 constants, heading split, table chunks, preview CLI, 22 tests | Session 9 Task 1 |

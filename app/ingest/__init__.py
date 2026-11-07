@@ -17,4 +17,3 @@ def __getattr__(name: str):
 
 
 __all__ = ["clean_text", "drop_lines", "repeated_lines", "shape", "parse_file"]
-
