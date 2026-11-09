@@ -115,4 +115,3 @@ def build_rag_messages(
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": user_content},
     ]
-

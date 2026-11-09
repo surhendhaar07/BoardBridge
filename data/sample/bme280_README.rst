@@ -16,3 +16,4 @@ This sample shows how to use the Zephyr :ref:`sensor` API driver for the
 The sample periodically reads temperature, pressure and humidity data from the
 first available BME280 device discovered in the system. The sample checks the
 sensor in polling mode (without interrupt trigger).
+3

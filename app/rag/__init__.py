@@ -13,6 +13,12 @@ from app.rag.chunking import (
     strip_table_text,
     table_texts,
 )
+from app.rag.embeddings import (
+    Embedder,
+    FakeEmbedder,
+    LocalEmbedder,
+    get_embedder,
+)
 from app.rag.retrieval import build_rag_messages, retrieve_zephyr_context
 
 __all__ = [
@@ -29,5 +35,8 @@ __all__ = [
     "table_texts",
     "build_rag_messages",
     "retrieve_zephyr_context",
+    "Embedder",
+    "FakeEmbedder",
+    "LocalEmbedder",
+    "get_embedder",
 ]
-

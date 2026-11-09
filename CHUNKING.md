@@ -123,4 +123,3 @@ Chunk lengths: min = 40, median = 713.0, max = 1000
 - **Metadata**: `--- drivers-sensor-bosch-bme280-bme280-h | page 1 | typedef int (*bme280_bus_check_fn)(const union bme280_bus *bus); | #6 | text`
 - **Length**: 759 characters.
 - **Finding**: Contains preprocessor macros and bitshifts for BME280 standby timings (`CONFIG_BME280_STANDBY_05MS` through `4000MS`) and humidity oversampling. C `#define` syntax and comments remain intact.
-

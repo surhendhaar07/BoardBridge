@@ -86,6 +86,18 @@ Commit after every class. Tag every Friday: `git tag week-N && git push origin w
 - [x] Full test suite (72/72 tests) passing
 - [x] `CHUNKING.md` created with complete documentation
 
+### GenAI Session 9 (Task 2) – Embeddings, pgvector and Idempotent Ingestion
+- [x] Embedder Protocol and providers implemented (`app/rag/embeddings.py`): FakeEmbedder and LocalEmbedder
+- [x] LocalEmbedder with lazy import of `sentence-transformers/all-MiniLM-L6-v2` and CPU inference
+- [x] Database schema defined in `app/rag/store.py` with `vector(384)`, HNSW cosine index, and `(doc_id, page)` index
+- [x] Schema connection helper with `register_vector` and table creation
+- [x] 3-level idempotent ingestion: in-batch deduplication, pre-embedding database check, and `ON CONFLICT (content_hash) DO NOTHING`
+- [x] Section heading prepended to embedding input (`f"{chunk.section}\n{chunk.text}"`) while preserving original text
+- [x] Command-line ingestion tool (`tools/ingest.py`) with `--max-pages`, `--report`, and `--db` flags
+- [x] Unit test suite (`tests/test_embeddings.py` and `tests/test_store_and_ingest.py`) with 15/15 passing tests
+- [x] Ingestion report documentation created (`INGESTION.md`)
+- [x] Full test suite (87/87 tests) passing offline without requiring database or internet
+
 ## Daily log
 | Date | What I did today | Commit |
 |---|---|---|
@@ -97,3 +109,4 @@ Commit after every class. Tag every Friday: `git tag week-N && git push origin w
 | 2026-11-03 | Session 7: CI on every push with docker-smoke, pre-commit v6.0.0 hooks, Render deployment guide, CI badge and live link | week-2 |
 | 2026-11-04 | Session 8: Document parsing for Zephyr source, PDF, HTML, Markdown; 23 test cases; pages.jsonl & sample_pages.json | Session 8 |
 | 2026-11-07 | Session 9 Task 1: Chunking module, 1000/150/25 constants, heading split, table chunks, preview CLI, 22 tests | Session 9 Task 1 |
+| 2026-11-09 | Session 9 Task 2: Embedder abstraction, pgvector storage, HNSW index, 3-level idempotent ingestion CLI, 15 tests | Session 9 Task 2 |

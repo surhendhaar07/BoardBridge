@@ -34,6 +34,11 @@ class Settings(BaseSettings):
     # Cost logging path
     cost_log_path: str = "logs/cost.jsonl"
 
+    # Embedding provider configuration
+    embedding_provider: str = "fake"  # fake | local
+    embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
+    embedding_dim: int = 384
+
 
 @lru_cache
 def get_settings() -> Settings:
